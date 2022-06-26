@@ -1,13 +1,19 @@
 import justpy as jp
+from webapp import layout
+from webapp import page
 
 
-class About:
+class About(page.Page):
     path = "/about"
 
     @classmethod
     def serve(cls, req):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes="")
+
+        lay = layout.DefaultLayout(a=wp)
+        container = jp.QPageContainer(a=lay)
+
+        div = jp.Div(a=container)
         jp.Div(a=div, text="This is the About page!", classes="text-4xl m-2")
         jp.Div(a=div, text="""
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
