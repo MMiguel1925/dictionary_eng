@@ -4,8 +4,7 @@ import justpy as jp
 class About:
     path = "/about"
 
-    @staticmethod
-    def serve():
+    def serve(self):
         wp = jp.QuasarPage(tailwind=True)
         div = jp.Div(a=wp, classes="")
         jp.Div(a=div, text="This is the About page!", classes="text-4xl m-2")
