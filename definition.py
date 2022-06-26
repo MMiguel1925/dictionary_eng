@@ -11,6 +11,5 @@ class Definition:
         return tuple(df.loc[df['word']==self.termo]['definition'])
 
 
-inst_definition = Definition('volleyball')
-
-print(inst_definition.get())
+# inst_definition = Definition('volleyball')
+# print(inst_definition.get())
