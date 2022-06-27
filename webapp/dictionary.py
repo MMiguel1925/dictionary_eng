@@ -2,6 +2,7 @@ import justpy as jp
 import definition
 from webapp import layout
 from webapp import page
+import requests
 
 
 class Dictionary(page.Page):
@@ -46,5 +47,10 @@ class Dictionary(page.Page):
     # de organização.
     @staticmethod
     def get_definition(widget, msg):
-        defined = definition.Definition(widget.value).get()
-        widget.outputdiv.text = " ".join(defined)
+        # obtemos a informaçao via API, contudo temos que ter o programa da API a correr na porta 8001
+        req = requests.get(f'http://localhost:8001/api?w={widget.value}')
+        dados = req.json()
+        widget.outputdiv.text = " ".join(dados["definition"])
+        # ou obtemos directamente via a Class Definition
+        # defined = definition.Definition(widget.value).get()
+        # widget.outputdiv.text = " ".join(defined)
